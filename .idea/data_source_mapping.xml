@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="DataSourcePerFileMappings">
+    <file url="file://$PROJECT_DIR$/migrations/20251206030806_create_post_table.down.sql" value="73857c54-6820-4dcf-9e1a-5db32b9a695d" />
+    <file url="file://$PROJECT_DIR$/migrations/20251206031129_alter_post_table.down.sql" value="73857c54-6820-4dcf-9e1a-5db32b9a695d" />
+    <file url="file://$PROJECT_DIR$/migrations/20251206031129_alter_post_table.up.sql" value="73857c54-6820-4dcf-9e1a-5db32b9a695d" />
+    <file url="file://$APPLICATION_CONFIG_DIR$/consoles/db/2f659f15-38a8-4d48-b8b5-be7250702010/console.sql" value="2f659f15-38a8-4d48-b8b5-be7250702010" />
+    <file url="file://$APPLICATION_CONFIG_DIR$/consoles/db/73857c54-6820-4dcf-9e1a-5db32b9a695d/console.sql" value="73857c54-6820-4dcf-9e1a-5db32b9a695d" />
+  </component>
+</project>
