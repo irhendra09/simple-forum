@@ -7,6 +7,8 @@ import (
 )
 
 func PostRoutes(r *gin.Engine) {
-	r.Use(middleware.AuthMiddleware())
-	r.POST("/post", handler.CreatePostsHandler)
+	router := r.Group("/post")
+	router.Use(middleware.AuthMiddleware())
+	router.POST("/", handler.CreatePostsHandler)
+	router.POST("comment/:postId", handler.CreateCommentHandler)
 }
