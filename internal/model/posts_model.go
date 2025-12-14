@@ -45,7 +45,7 @@ type (
 
 	GetPostResponse struct {
 		PostDetail Post      `json:"postDetail"`
-		LikeCount  int       `json:"likeCount"`
+		LikeCount  int64     `json:"likeCount"`
 		Comments   []Comment `json:"comments"`
 	}
 
@@ -56,3 +56,28 @@ type (
 		CommentContent string `json:"commentContent"`
 	}
 )
+
+type UserActivity struct {
+	ID        int64     `db:"id"`
+	PostID    int64     `db:"post_id"`
+	UserID    int64     `db:"user_id"`
+	IsLiked   bool      `db:"is_liked"`
+	CreatedAt time.Time `db:"created_at"`
+	UpdatedAt time.Time `db:"updated_at"`
+	CreatedBy string    `db:"created_by"`
+	UpdatedBy string    `db:"updated_by"`
+}
+
+type (
+	UserActivityRequest struct {
+		IsLiked bool `json:"isLiked"`
+	}
+)
+
+type PaginatedResult[T any] struct {
+	Data       []T   `json:"data"`
+	Total      int64 `json:"total"`
+	Page       int   `json:"page"`
+	PageSize   int   `json:"page_size"`
+	TotalPages int   `json:"total_pages"`
+}

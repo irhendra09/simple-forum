@@ -1,0 +1,9 @@
+jwt_secret: "please-change-this-secret"
+
+database:
+  host: localhost
+  port: "5432"
+  user: postgres
+  password: admin123
+  name: forum_db
+  sslmode: disable

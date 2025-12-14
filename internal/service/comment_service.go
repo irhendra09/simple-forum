@@ -4,12 +4,24 @@ import (
 	"strconv"
 	"time"
 
+	"donedev.com/simple-forum/internal/interfaces"
 	"donedev.com/simple-forum/internal/model"
-	"donedev.com/simple-forum/internal/repository"
 	"github.com/rs/zerolog/log"
 )
 
-func CreateComment(postID, userId int64, comments *model.CreateCommentRequest) error {
+var CommentService interfaces.CommentService
+
+type commentService struct {
+	repo interfaces.CommentRepository
+}
+
+func NewCommentService(repo interfaces.CommentRepository) interfaces.CommentService {
+	s := &commentService{repo: repo}
+	CommentService = s
+	return s
+}
+
+func (s *commentService) CreateComment(postID, userId int64, comments *model.CreateCommentRequest) error {
 	now := time.Now()
 
 	comment := &model.Comments{
@@ -21,7 +33,7 @@ func CreateComment(postID, userId int64, comments *model.CreateCommentRequest) e
 		CreatedBy:      strconv.FormatInt(userId, 10),
 		UpdatedBy:      strconv.FormatInt(userId, 10),
 	}
-	err := repository.CreateComment(comment)
+	err := s.repo.CreateComment(comment)
 	if err != nil {
 		log.Error().Err(err).Msg("Failed to create comment")
 		return err
